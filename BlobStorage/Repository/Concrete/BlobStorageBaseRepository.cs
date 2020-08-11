@@ -14,7 +14,7 @@ namespace BlobStorage.Repository.Concrete
 {
     public class BlobStorageBaseRepository :IBlobStorageRepository
     {
-        public string BlobPath { get; } = "https://astorageaccountexample.blob.core.windows.net/";
+        public string BlobPath { get; } = "YourBlobPath";
         private readonly BlobServiceClient _blobServiceClient;
         public BlobStorageBaseRepository()
         {
