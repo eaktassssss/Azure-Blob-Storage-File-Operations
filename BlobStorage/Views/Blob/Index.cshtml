@@ -1,0 +1,41 @@
+﻿@model List<BlobModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Dosya Yükle</h2>
+<form asp-action="Upload" asp-controller="Blob" method="post" enctype="multipart/form-data">
+    <input type="file" name="picture" />
+    <button class="btn btn-warning" type="submit">Yükle</button>
+</form>
+<h3>
+
+
+    @foreach (var item in  ViewBag.logs as List<string>)
+    {
+        <span>Log Bilgisi:@item</span>
+    }
+</h3>
+<h1>Resimler</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">İsmi</th>
+            <th scope="col">Resim</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><img src="@item.Url" class="rounded" height="100" width="100" alt="Cinque Terre"></td>
+                <td>@Html.ActionLink("Download", "Download", "Blob", new { fileName = item.Name })</td>
+                <td>@Html.ActionLink("Delete", "Delete", "Blob", new { fileName = item.Name })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
